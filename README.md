@@ -27,16 +27,22 @@ touch /etc/timelapse/log.txt
 
 ### Setup Cron Job
 
-```
-EDITOR=nano sudo crontab -e
-```
-
 Find your python installation:
 ```
 which python3
 ```
 
+Edit Crontab:
+```
+EDITOR=nano sudo crontab -e
+```
+
 Copy in the line below:
 ```
 */15 5-23 * * * <output of "which python3"> /home/pi/cron_timelapse/main.py >> /etc/timelapse/log.txt 2>&1
+```
+
+An example is:
+```
+*/15 5-23 * * * /usr/bin/python3 /home/pi/cron_timelapse/main.py >> /etc/timelapse/log.txt 2>&1
 ```
