@@ -13,6 +13,7 @@ if __name__ == "__main__":
 
     retry = 0
     captured = False
+    camera = None
 
     while retry < retries:
         try:
@@ -38,6 +39,8 @@ if __name__ == "__main__":
         except Exception as e:
             print('Error while capturing image', e)
             retry += 1
+            if camera:
+                camera.release()
 
     camera.release()
 
